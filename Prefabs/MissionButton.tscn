@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/MissionButton.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Mission01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fonts/FONT_Button.tres" type="DynamicFont" id=3]
+
+[node name="Mission Button 01" type="Button"]
+margin_right = 182.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 3 )
+text = "Mission 01"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+mission_scene = ExtResource( 2 )
+[connection signal="pressed" from="." to="." method="_on_Mission_Button_pressed"]
