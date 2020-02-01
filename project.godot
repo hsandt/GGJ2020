@@ -15,7 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GGJ 2020"
+config/name="GGJ 2020 - Broken Fantasy"
+run/main_scene="res://Scenes/Title.tscn"
 config/icon="res://icon.png"
 
 [rendering]
