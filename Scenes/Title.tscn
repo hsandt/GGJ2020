@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/Sigmar One/SigmarOne-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/MissionButton.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Mission01.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 57
@@ -21,3 +23,19 @@ custom_fonts/font = SubResource( 1 )
 text = "Broken fantasy"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mission Button 01" type="Button" parent="."]
+margin_left = 197.296
+margin_top = 345.499
+margin_right = 279.296
+margin_bottom = 365.499
+text = "Mission 01"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+mission_scene = ExtResource( 4 )
+[connection signal="pressed" from="Mission Button 01" to="Mission Button 01" method="_on_Mission_Button_pressed"]
