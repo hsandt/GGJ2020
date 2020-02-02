@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fonts/FONT_Title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/InstructionsButton.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/FONT_Button.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Fonts/FONT_Instructions.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Prefabs/MissionButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/QuitButton.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/InstructionsBackButton.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/TitleRoot.gd" type="Script" id=8]
 
@@ -57,14 +58,23 @@ margin_right = 376.0
 text = "Mission 02"
 mission_number = 2
 
-[node name="InstructionsButton" type="Button" parent="."]
-anchor_top = 0.813
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.717
+anchor_top = 0.693
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 382.183
-margin_top = 27.6321
-margin_right = -382.0
-margin_bottom = -31.5679
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstructionsButton" type="Button" parent="VBoxContainer"]
+margin_right = 322.0
+margin_bottom = 53.0
 custom_fonts/font = ExtResource( 3 )
 text = "Instructions"
 script = ExtResource( 2 )
@@ -73,7 +83,19 @@ __meta__ = {
 }
 instructions_panel = NodePath("../InstructionsPanel")
 
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+margin_top = 73.0
+margin_right = 322.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 3 )
+text = "Quit"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="InstructionsPanel" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -116,5 +138,6 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="InstructionsButton" to="InstructionsButton" method="_on_Instructions_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/InstructionsButton" to="VBoxContainer/InstructionsButton" method="_on_Instructions_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="VBoxContainer/QuitButton" method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="InstructionsPanel/BackButton" to="InstructionsPanel/BackButton" method="_on_Instructions_Button_pressed"]
