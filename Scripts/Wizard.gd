@@ -1,6 +1,11 @@
 extends Node2D
 
+# Asset references
+export(PackedScene) var fireball_prefab
+
+# Child references
 onready var timer = $Timer as Timer
+onready var fireball_spawn_point = $FireballSpawnPoint as Node2D
 
 func _ready():
 	var _error
@@ -19,12 +24,17 @@ func on_mission_succeed():
 	timer.stop()
 
 func on_mission_failed():
-	pass
+	timer.stop()
 
 func _on_Timer_timeout():
 	shoot_fireball()
 	
 func shoot_fireball():
-	print("FIREBALL!!")
+	# spawn fireball in Mission scene root (not global root)
+	# so fireball gets removed when changing/reloading level
+	var fireball = fireball_prefab.instance()
+	owner.add_child(fireball)
+	fireball.global_position = fireball_spawn_point.global_position
+	
 	# cheat
 	GameManager.succeed_mission()

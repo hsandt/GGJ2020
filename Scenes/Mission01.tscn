@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/MissionHUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Wizard.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Wizard.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/square_red.png" type="Texture" id=4]
+[ext_resource path="res://Prefabs/Fireball.tscn" type="PackedScene" id=4]
 
 [node name="Root2D" type="Control"]
 anchor_right = 1.0
@@ -13,6 +13,8 @@ __meta__ = {
 }
 
 [node name="MissionHUDRoot" parent="." instance=ExtResource( 1 )]
+margin_top = -7.49545
+margin_bottom = -7.49548
 title = NodePath("../MissionHUDRoot/Title")
 
 [node name="Wizard" type="Node2D" parent="."]
@@ -21,6 +23,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+fireball_prefab = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="Wizard"]
 wait_time = 2.0
@@ -29,12 +32,10 @@ wait_time = 2.0
 scale = Vector2( 0.33, 0.33 )
 texture = ExtResource( 3 )
 
-[node name="Fireball" type="Node2D" parent="."]
-position = Vector2( 627.713, 473.925 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="FireballSpawnPoint" type="Node2D" parent="Wizard"]
+position = Vector2( -102.156, -3.84415 )
 
-[node name="Sprite" type="Sprite" parent="Fireball"]
-texture = ExtResource( 4 )
+[node name="Fireball" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 573.332, 460.081 )
 [connection signal="timeout" from="Wizard/Timer" to="Wizard" method="_on_Timer_timeout"]
