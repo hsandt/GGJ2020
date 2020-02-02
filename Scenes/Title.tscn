@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Fonts/FONT_Title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/InstructionsButton.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/FONT_Button.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Fonts/FONT_Instructions.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Prefabs/MissionButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Mission02.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/InstructionsBackButton.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/TitleRoot.gd" type="Script" id=8]
 
@@ -50,12 +49,13 @@ __meta__ = {
 }
 
 [node name="MissionButton01" parent="GridContainer" instance=ExtResource( 5 )]
+mission_number = 1
 
 [node name="MissionButton02" parent="GridContainer" instance=ExtResource( 5 )]
 margin_left = 192.0
 margin_right = 376.0
 text = "Mission 02"
-mission_scene = ExtResource( 6 )
+mission_number = 2
 
 [node name="InstructionsButton" type="Button" parent="."]
 anchor_top = 0.813
@@ -81,8 +81,8 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="InstructionsPanel"]
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.488, 0.488, 0.61, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

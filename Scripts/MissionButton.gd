@@ -1,6 +1,6 @@
 extends Button
 
-export(PackedScene) var mission_scene
+export(int) var mission_number
 
 func _on_Mission_Button_pressed():
-	get_tree().change_scene_to(mission_scene)
+	GameManager.start_mission(self.mission_number)
