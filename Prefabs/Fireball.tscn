@@ -7,6 +7,7 @@
 
 [node name="Fireball" type="KinematicBody2D"]
 position = Vector2( 573.332, 460.081 )
+collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

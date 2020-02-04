@@ -2,6 +2,13 @@ extends Control
 
 export(NodePath) var title
 
+onready var success_label = $Success
+onready var failure_label = $Failure
+onready var run_button = $HBoxContainer/RunButton
+onready var retry_button = $HBoxContainer/RetryButton
+onready var next_mission_button = $HBoxContainer/NextMissionButton
+onready var back_to_tile_button = $HBoxContainer/BackToTitleButton
+
 func _ready():
 	var _error
 	_error = GameManager.connect("setup_mission", self, "on_mission_setup")
@@ -12,7 +19,7 @@ func _ready():
 	var title_label = get_node(self.title) as Label
 	if title_label:
 		title_label.text = "Mission %02d" % GameManager.current_mission_number
-		
+	
 	# DEBUG: when debugging by starting in MissionHUD scene, current mission is 0
 	# so setup something meaningful to avoid errors (there is no level though,
 	# so you won't be able to test everything as in the real game)
@@ -23,29 +30,33 @@ func _ready():
 	# END DEBUG
 
 func on_mission_setup():
-	$Success.hide()
-	$HBoxContainer/RunButton.show()
-	$HBoxContainer/RetryButton.show()
-	$HBoxContainer/NextMissionButton.hide()
-	$HBoxContainer/BackToTitleButton.show()
-	
+	success_label.hide()
+	failure_label.hide()
+	run_button.show()
+	retry_button.hide()
+	next_mission_button.hide()
+	next_mission_button.show()
+
 func on_mission_run():
-	$Success.hide()
-	$HBoxContainer/RunButton.hide()
-	$HBoxContainer/RetryButton.show()
-	$HBoxContainer/NextMissionButton.hide()
-	$HBoxContainer/BackToTitleButton.show()
+	success_label.hide()
+	failure_label.hide()
+	run_button.hide()
+	retry_button.show()
+	next_mission_button.hide()
+	next_mission_button.show()
 
 func on_mission_succeed():
-	$Success.show()
-	$HBoxContainer/RunButton.hide()
-	$HBoxContainer/RetryButton.show()
-	$HBoxContainer/NextMissionButton.show()
-	$HBoxContainer/BackToTitleButton.show()
+	success_label.show()
+	failure_label.hide()
+	run_button.hide()
+	retry_button.show()
+	next_mission_button.show()
+	next_mission_button.show()
 
 func on_mission_failed():
-	$Success.hide()
-	$HBoxContainer/RunButton.hide()
-	$HBoxContainer/RetryButton.show()
-	$HBoxContainer/NextMissionButton.hide()
-	$HBoxContainer/BackToTitleButton.show()
+	success_label.hide()
+	failure_label.show()
+	run_button.hide()
+	retry_button.show()
+	next_mission_button.hide()
+	next_mission_button.show()

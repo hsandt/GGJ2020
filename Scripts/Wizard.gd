@@ -13,8 +13,12 @@ onready var timer = $Timer as Timer
 onready var fireball_spawn_point = $FireballSpawnPoint as Node2D
 
 # Parameter
-export(HorizontalDirection) var direction
-export(float) var fireball_speed = 200
+export(float) var initial_fireball_delay = 1.0
+export(float) var fireball_interval = 2.0
+export(float) var fireball_speed = 200.0
+
+# Deduced by scale x / fireball spawn point position relative to center
+var direction : int  # HorizontalDirection
 
 func _ready():
 	var _error
@@ -23,11 +27,13 @@ func _ready():
 	_error = GameManager.connect("succeed_mission", self, "on_mission_succeed")
 	_error = GameManager.connect("fail_mission", self, "on_mission_failed")
 
+	self.direction = HorizontalDirection.Left if scale.x > 0 else HorizontalDirection.Right
+
 func on_mission_setup():
 	pass
 
 func on_mission_run():
-	timer.start()
+	timer.start(initial_fireball_delay)
 
 func on_mission_succeed():
 	timer.stop()
@@ -37,6 +43,10 @@ func on_mission_failed():
 
 func _on_Timer_timeout():
 	shoot_fireball()
+	
+	# timer is one-shot, so we restart it manually (allows us to use different
+	# interval than initial delay)
+	timer.start(fireball_interval)
 	
 func shoot_fireball():
 	# spawn fireball in Mission scene root (not global root)

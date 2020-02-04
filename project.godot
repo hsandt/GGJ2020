@@ -50,6 +50,11 @@ toggle_hidpi={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Character"
+2d_physics/layer_2="Projectile"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
