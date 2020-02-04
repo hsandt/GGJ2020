@@ -17,17 +17,12 @@ export(float) var initial_fireball_delay = 1.0
 export(float) var fireball_interval = 2.0
 export(float) var fireball_speed = 200.0
 
-# Deduced by scale x / fireball spawn point position relative to center
-var direction : int  # HorizontalDirection
-
 func _ready():
 	var _error
 	_error = GameManager.connect("setup_mission", self, "on_mission_setup")
 	_error = GameManager.connect("run_mission", self, "on_mission_run")
 	_error = GameManager.connect("succeed_mission", self, "on_mission_succeed")
 	_error = GameManager.connect("fail_mission", self, "on_mission_failed")
-
-	self.direction = HorizontalDirection.Left if scale.x > 0 else HorizontalDirection.Right
 
 func on_mission_setup():
 	pass
@@ -50,17 +45,26 @@ func _on_Timer_timeout():
 
 # Input
 
-func _unhandled_input(event: InputEvent):
+func _on_ClickArea2D_input_event(viewport, event, shape_idx):
+	# during setup only, click to change direction
 	if event.is_action_pressed("mouse_interact"):
-		print(event.global_position)
+		if GameManager.phase == GameManager.Phase.Setup:
+			mirror_direction()
+
+# Setup
+func mirror_direction():
+	scale.x *= -1
 
 # Behavior
+
+func get_direction_vector():
+	return Vector2.LEFT if scale.x > 0 else Vector2.RIGHT
 
 func shoot_fireball():
 	# spawn fireball in Mission scene root (not global root)
 	# so fireball gets removed when changing/reloading level
 	var fireball = fireball_prefab.instance()
 	owner.add_child(fireball)
-	var velocity_dir = Vector2.LEFT if direction == HorizontalDirection.Left else Vector2.RIGHT
-	var fireball_velocity = fireball_speed * velocity_dir
+	var fireball_velocity = fireball_speed * get_direction_vector()
 	fireball.setup(fireball_spawn_point.global_position, fireball_velocity)
+
