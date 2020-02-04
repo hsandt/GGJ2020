@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Boss.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/RubberDuck.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 60.0
+
+[node name="Boss" type="Node2D"]
+position = Vector2( 335, 473.925 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 16.7512 )
+scale = Vector2( 2.05292, 2.05292 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

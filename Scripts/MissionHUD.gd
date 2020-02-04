@@ -1,6 +1,8 @@
-extends Control
+extends CanvasLayer
 
-export(NodePath) var title
+export(NodePath) var title_path
+
+var title_label : Label
 
 onready var success_label = $Success
 onready var failure_label = $Failure
@@ -16,7 +18,8 @@ func _ready():
 	_error = GameManager.connect("succeed_mission", self, "on_mission_succeed")
 	_error = GameManager.connect("fail_mission", self, "on_mission_failed")
 	
-	var title_label = get_node(self.title) as Label
+	title_label = get_node(self.title_path) as Label
+	assert(title_label)
 	if title_label:
 		title_label.text = "Mission %02d" % GameManager.current_mission_number
 	

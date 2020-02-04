@@ -8,14 +8,9 @@
 [ext_resource path="res://Scripts/BackToTitleButton.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/RunButton.gd" type="Script" id=7]
 
-[node name="MissionHUDRoot" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MissionHUDRoot" type="CanvasLayer"]
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-title = NodePath("Title")
+title_path = NodePath("Title")
 
 [node name="Title" type="Label" parent="."]
 anchor_right = 1.0

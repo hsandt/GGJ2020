@@ -45,7 +45,7 @@ func _on_Timer_timeout():
 
 # Input
 
-func _on_ClickArea2D_input_event(viewport, event, shape_idx):
+func _on_ClickArea2D_input_event(_viewport, event, _shape_idx):
 	# during setup only, click to change direction
 	if event.is_action_pressed("mouse_interact"):
 		if GameManager.phase == GameManager.Phase.Setup:

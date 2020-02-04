@@ -16,7 +16,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-instructions_panel = NodePath("InstructionsPanel")
+instructions_panel_path = NodePath("InstructionsPanel")
 
 [node name="Title" type="Label" parent="."]
 anchor_top = 0.232
@@ -81,7 +81,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-instructions_panel = NodePath("../InstructionsPanel")
+instructions_panel_path = NodePath("../../InstructionsPanel")
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 margin_top = 73.0
