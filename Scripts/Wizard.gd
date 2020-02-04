@@ -47,7 +47,15 @@ func _on_Timer_timeout():
 	# timer is one-shot, so we restart it manually (allows us to use different
 	# interval than initial delay)
 	timer.start(fireball_interval)
-	
+
+# Input
+
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("mouse_interact"):
+		print(event.global_position)
+
+# Behavior
+
 func shoot_fireball():
 	# spawn fireball in Mission scene root (not global root)
 	# so fireball gets removed when changing/reloading level

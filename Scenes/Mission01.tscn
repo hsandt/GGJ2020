@@ -12,16 +12,12 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 60.0
 
-[node name="Root2D" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="Root2D" type="Node2D"]
 
-[node name="MissionHUDRoot" parent="." instance=ExtResource( 1 )]
-margin_bottom = -6.10352e-05
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MissionHUDRoot" parent="CanvasLayer" instance=ExtResource( 1 )]
+mouse_filter = 2
 title = NodePath("../MissionHUDRoot/Title")
 
 [node name="Wizard" type="Node2D" parent="."]
