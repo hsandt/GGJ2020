@@ -9,4 +9,11 @@ func _ready():
 #	pass
 
 func _on_Area2D_body_entered(body):
-	print("body entered")
+	var fireball = body as Fireball
+	if fireball:
+		# collision with fireball detected, destroy both entities
+		fireball.queue_free()
+		queue_free()
+		
+		# boss has been defeated, so player wins this mission
+		GameManager.succeed_mission()

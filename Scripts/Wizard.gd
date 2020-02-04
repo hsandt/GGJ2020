@@ -46,6 +46,3 @@ func shoot_fireball():
 	var velocity_dir = Vector2.LEFT if direction == HorizontalDirection.Left else Vector2.RIGHT
 	var fireball_velocity = fireball_speed * velocity_dir
 	fireball.setup(fireball_spawn_point.global_position, fireball_velocity)
-	
-	# cheat
-	GameManager.succeed_mission()
