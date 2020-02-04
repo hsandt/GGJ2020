@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/MissionHUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Wizard.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Wizard.png" type="Texture" id=3]
 [ext_resource path="res://Prefabs/Fireball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/RubberDuck.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Boss.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
 
 [node name="Root2D" type="Control"]
 anchor_right = 1.0
@@ -37,5 +42,22 @@ position = Vector2( -102.156, -3.84415 )
 
 [node name="Fireball" parent="." instance=ExtResource( 4 )]
 visible = false
-position = Vector2( 573.332, 460.081 )
+
+[node name="Boss" type="Node2D" parent="."]
+position = Vector2( 364.28, 473.925 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Boss"]
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="Boss"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/Area2D"]
+position = Vector2( 0, -5 )
+shape = SubResource( 1 )
 [connection signal="timeout" from="Wizard/Timer" to="Wizard" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Boss/Area2D" to="Boss" method="_on_Area2D_body_entered"]

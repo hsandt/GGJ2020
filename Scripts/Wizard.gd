@@ -1,11 +1,20 @@
 extends Node2D
 
+enum HorizontalDirection {
+	Left,
+	Right
+}
+
 # Asset references
 export(PackedScene) var fireball_prefab
 
 # Child references
 onready var timer = $Timer as Timer
 onready var fireball_spawn_point = $FireballSpawnPoint as Node2D
+
+# Parameter
+export(HorizontalDirection) var direction
+export(float) var fireball_speed = 200
 
 func _ready():
 	var _error
@@ -34,7 +43,9 @@ func shoot_fireball():
 	# so fireball gets removed when changing/reloading level
 	var fireball = fireball_prefab.instance()
 	owner.add_child(fireball)
-	fireball.global_position = fireball_spawn_point.global_position
+	var velocity_dir = Vector2.LEFT if direction == HorizontalDirection.Left else Vector2.RIGHT
+	var fireball_velocity = fireball_speed * velocity_dir
+	fireball.setup(fireball_spawn_point.global_position, fireball_velocity)
 	
 	# cheat
 	GameManager.succeed_mission()
