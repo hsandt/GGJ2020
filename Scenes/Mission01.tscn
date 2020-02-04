@@ -21,8 +21,7 @@ __meta__ = {
 }
 
 [node name="MissionHUDRoot" parent="." instance=ExtResource( 1 )]
-margin_top = -7.49545
-margin_bottom = -7.49548
+margin_bottom = -6.10352e-05
 title = NodePath("../MissionHUDRoot/Title")
 
 [node name="Wizard" type="Node2D" parent="."]
