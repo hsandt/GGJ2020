@@ -1,4 +1,4 @@
-extends Node2D
+extends Character
 
 enum HorizontalDirection {
 	Left,
@@ -68,3 +68,5 @@ func shoot_fireball():
 	var fireball_velocity = fireball_speed * get_direction_vector()
 	fireball.setup(fireball_spawn_point.global_position, fireball_velocity)
 
+func die():
+	queue_free()
