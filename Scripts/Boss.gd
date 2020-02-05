@@ -11,9 +11,26 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	var fireball = body as Fireball
 	if fireball:
-		# collision with fireball detected, destroy both entities
-		fireball.queue_free()
-		queue_free()
+		on_fireball_collision(fireball)
+		return
+	
+	var chandelier_body = body as ChandelierBody
+	if chandelier_body:
+		on_chandelier_collision(chandelier_body)
+		return
 		
-		# boss has been defeated, so player wins this mission
-		GameManager.succeed_mission()
+func on_fireball_collision(fireball):
+	# collision with fireball detected, destroy both entities
+	fireball.queue_free()
+	die()
+
+func on_chandelier_collision(chandelier_body):
+	# collision with fireball detected, kill boss
+	# (but chandelier remains)
+	die()
+
+func die():
+	queue_free()
+
+	# boss has been defeated, so player wins this mission
+	GameManager.succeed_mission()
