@@ -44,7 +44,6 @@ func on_mission_setup():
 	run_button.show()
 	retry_button.hide()
 	next_mission_button.hide()
-	next_mission_button.show()
 
 func on_mission_run():
 	success_label.hide()
@@ -52,14 +51,12 @@ func on_mission_run():
 	run_button.hide()
 	retry_button.show()
 	next_mission_button.hide()
-	next_mission_button.show()
 
 func on_mission_succeed():
 	success_label.show()
 	failure_label.hide()
 	run_button.hide()
 	retry_button.show()
-	next_mission_button.show()
 	next_mission_button.show()
 
 func on_mission_failed():
@@ -68,4 +65,3 @@ func on_mission_failed():
 	run_button.hide()
 	retry_button.show()
 	next_mission_button.hide()
-	next_mission_button.show()
