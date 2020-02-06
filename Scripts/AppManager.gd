@@ -5,7 +5,7 @@ var initial_size = Vector2(ProjectSettings.get_setting("display/window/size/widt
 	ProjectSettings.get_setting("display/window/size/height"))
 
 # State
-var hidpi_active: bool
+var hidpi_active = false
 
 func _input(event):
 	# let user toggle hi-dpi resolution freely

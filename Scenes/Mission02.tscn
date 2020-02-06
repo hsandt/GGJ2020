@@ -1,63 +1,44 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/MissionHUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/MageRed.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prefabs/Boss.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Princess.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sprites/chandelier_hanger.png" type="Texture" id=5]
-[ext_resource path="res://Anims/SPRFR_ChandelierBody.tres" type="SpriteFrames" id=6]
-[ext_resource path="res://Scripts/Chandelier.gd" type="Script" id=7]
-[ext_resource path="res://Scripts/ChandelierBody.gd" type="Script" id=8]
+[ext_resource path="res://Prefabs/Chandelier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/MissionScene.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/DeadZone.gd" type="Script" id=7]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 95.7016, 25.941 )
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 53.2659
+[sub_resource type="ConcavePolygonShape2D" id=1]
+segments = PoolVector2Array( -100, -100, 1380, -100, 1380, -100, 1380, 820, 1380, 820, -100, 820, -100, 820, -100, -100 )
 
 [node name="Root2D" type="Node2D"]
+script = ExtResource( 6 )
+mission_number = 2
 
 [node name="MissionHUDRoot" parent="." instance=ExtResource( 1 )]
 
 [node name="MageRed" parent="." instance=ExtResource( 2 )]
+position = Vector2( 178.038, 402.37 )
 scale = Vector2( -1, 1 )
 
+[node name="MageRed2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1086.96, 402.37 )
+
 [node name="Boss" parent="." instance=ExtResource( 3 )]
-position = Vector2( 477.635, 558.843 )
+position = Vector2( 477.635, 632.703 )
 
 [node name="Princess" parent="." instance=ExtResource( 4 )]
-position = Vector2( 984.796, 473.925 )
+position = Vector2( 745.835, 632.702 )
 
-[node name="Chandelier" type="Node2D" parent="."]
-position = Vector2( 491.095, 454.263 )
+[node name="Chandelier" parent="." instance=ExtResource( 5 )]
+position = Vector2( 477.635, 402.37 )
+
+[node name="Chandelier2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 745.835, 402.37 )
+
+[node name="DeadZoneArea2D" type="Area2D" parent="."]
 script = ExtResource( 7 )
 
-[node name="Hanger" type="Sprite" parent="Chandelier"]
-position = Vector2( 0, -151.5 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 5 )
-
-[node name="ChandelierBody" type="RigidBody2D" parent="Chandelier"]
-collision_layer = 4
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Chandelier/ChandelierBody"]
-scale = Vector2( 3, 3 )
-frames = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chandelier/ChandelierBody"]
-position = Vector2( 0, 16.118 )
+[node name="OuterShape" type="CollisionShape2D" parent="DeadZoneArea2D"]
 shape = SubResource( 1 )
-
-[node name="Area2D" type="Area2D" parent="Chandelier"]
-input_pickable = false
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chandelier/Area2D"]
-position = Vector2( 0, -32.212 )
-shape = SubResource( 2 )
-[connection signal="body_entered" from="Chandelier/Area2D" to="Chandelier" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="DeadZoneArea2D" to="DeadZoneArea2D" method="_on_Area2D_body_entered"]

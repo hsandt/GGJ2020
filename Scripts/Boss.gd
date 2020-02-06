@@ -1,7 +1,10 @@
 extends Character
 
+func on_mission_setup():
+	GameManager.living_bosses_count += 1
+	print("total boss: " + str(GameManager.living_bosses_count))
+
 func die():
 	queue_free()
-
-	# boss has been defeated, so player wins this mission
-	GameManager.succeed_mission()
+	GameManager.living_bosses_count -= 1
+	print("total boss: " + str(GameManager.living_bosses_count))

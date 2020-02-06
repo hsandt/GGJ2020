@@ -2,6 +2,5 @@ extends Character
 
 func die():
 	queue_free()
-	
-	# princess has been defeated, so player loses this mission
-	GameManager.fail_mission()
+	GameManager.dead_princesses_count += 1
+	print("total princesses dead: " + str(GameManager.dead_princesses_count))

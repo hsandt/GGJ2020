@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Fireball",
 "language": "GDScript",
 "path": "res://Scripts/Fireball.gd"
+}, {
+"base": "Node2D",
+"class": "MissionScene",
+"language": "GDScript",
+"path": "res://Scripts/MissionScene.gd"
 } ]
 _global_script_class_icons={
 "ChandelierBody": "",
 "Character": "",
-"Fireball": ""
+"Fireball": "",
+"MissionScene": ""
 }
 
 [application]

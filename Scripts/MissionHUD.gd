@@ -2,8 +2,8 @@ extends CanvasLayer
 
 export(NodePath) var title_path
 
-var title_label : Label
-
+onready var mission_scene = owner as MissionScene
+onready var title_label = $Title as Label
 onready var success_label = $Success
 onready var failure_label = $Failure
 onready var run_button = $HBoxContainer/RunButton
@@ -18,19 +18,25 @@ func _ready():
 	_error = GameManager.connect("succeed_mission", self, "on_mission_succeed")
 	_error = GameManager.connect("fail_mission", self, "on_mission_failed")
 	
-	title_label = get_node(self.title_path) as Label
-	assert(title_label)
-	if title_label:
-		title_label.text = "Mission %02d" % GameManager.current_mission_number
-	
-	# DEBUG: when debugging by starting in MissionHUD scene, current mission is 0
-	# so setup something meaningful to avoid errors (there is no level though,
-	# so you won't be able to test everything as in the real game)
-	# must be done after connecting signals so setup_mission comes back to us
-	if GameManager.current_mission_number == 0:
-		GameManager.current_mission_number = 1
-		GameManager.setup_mission()
-	# END DEBUG
+	if mission_scene:
+		title_label.text = "Mission %02d" % mission_scene.mission_number
+		# DEBUG
+		# When debugging by starting in Mission scene (F6), current mission is 0
+		# so setup mission with number provided by scene root script (no need to start,
+		# as mission scene is already loaded).
+		# This must be done after connecting signals so setup_mission comes back to us,
+		# hence call_deferred
+		if GameManager.current_mission_number == 0:
+			call_deferred("debug_setup_mission")
+		# END DEBUG
+	else:
+		print("WARNING: cannot set Mission Title label. Are you playing in the Mission HUD scene?")
+
+# DEBUG
+func debug_setup_mission():
+	GameManager.current_mission_number = mission_scene.mission_number
+	GameManager.setup_mission()
+# END DEBUG
 
 func on_mission_setup():
 	success_label.hide()
