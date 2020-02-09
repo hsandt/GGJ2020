@@ -11,7 +11,7 @@ var is_body_detached = false
 func _ready():
 	chandelier_body.gravity_scale = 0.0
 
-func _on_Area2D_body_entered(body):
+func _on_BreakableLink_body_entered(body):
 	var fireball = body as Fireball
 	if fireball and not is_body_detached:
 		# collision with fireball detected, destroy it

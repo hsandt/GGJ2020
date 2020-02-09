@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/MissionHUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/MageRed.tscn" type="PackedScene" id=2]
@@ -11,10 +11,13 @@
 [ext_resource path="res://Scripts/MageWhite.gd" type="Script" id=9]
 [ext_resource path="res://Sprites/white_barrier.png" type="Texture" id=10]
 
-[sub_resource type="ConcavePolygonShape2D" id=1]
+[sub_resource type="ConcavePolygonShape2D" id=3]
 segments = PoolVector2Array( -100, -100, 1380, -100, 1380, -100, 1380, 820, 1380, 820, -100, 820, -100, 820, -100, -100 )
 
+[sub_resource type="CircleShape2D" id=4]
+
 [sub_resource type="CircleShape2D" id=2]
+radius = 60.0
 
 [node name="MissionScene" type="Node2D"]
 script = ExtResource( 6 )
@@ -24,17 +27,20 @@ mission_number = 3
 title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
 
 [node name="MageRed" parent="." instance=ExtResource( 2 )]
-position = Vector2( 178.038, 402.37 )
+position = Vector2( 1027.11, 557.047 )
 scale = Vector2( -1, 1 )
 
 [node name="Boss" parent="." instance=ExtResource( 3 )]
-position = Vector2( 477.635, 632.703 )
+position = Vector2( 215.245, 557.047 )
 
 [node name="Chandelier" parent="." instance=ExtResource( 5 )]
-position = Vector2( 459.542, 259.606 )
+position = Vector2( 215.245, 343.606 )
 
 [node name="Chandelier2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 727.742, 259.606 )
+position = Vector2( 622.387, 343.606 )
+
+[node name="Chandelier3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1024.31, 343.606 )
 
 [node name="DeadZoneArea2D" type="Area2D" parent="."]
 collision_layer = 16
@@ -42,10 +48,10 @@ collision_mask = 2
 script = ExtResource( 7 )
 
 [node name="OuterShape" type="CollisionShape2D" parent="DeadZoneArea2D"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="MageWhite" type="Node2D" parent="."]
-position = Vector2( 401.567, 434.58 )
+position = Vector2( 622.387, 557.047 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
@@ -63,11 +69,18 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MageWhite/WhiteBarrier"]
 scale = Vector2( 10, 10 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="MageWhite/WhiteBarrier"]
 scale = Vector2( 0.397041, 0.397041 )
 texture = ExtResource( 10 )
-[connection signal="body_entered" from="DeadZoneArea2D" to="DeadZoneArea2D" method="_on_Area2D_body_entered"]
 
-[editable path="MageRed"]
+[node name="HurtBox" type="Area2D" parent="MageWhite"]
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MageWhite/HurtBox"]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="DeadZoneArea2D" to="DeadZoneArea2D" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="MageWhite/HurtBox" to="MageWhite" method="_on_HurtBox_body_entered"]

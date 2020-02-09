@@ -7,7 +7,7 @@ enum Phase {
 	Failure
 }
 
-const MAX_MISSION_NUMBER = 2
+const MAX_MISSION_NUMBER = 3
 
 signal setup_mission
 signal run_mission

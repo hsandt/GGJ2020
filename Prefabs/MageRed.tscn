@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/Wizard.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/MageRed.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 75.327
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 60.0
 
 [node name="MageRed" type="Node2D"]
 position = Vector2( 638.539, 473.925 )
@@ -28,5 +31,12 @@ position = Vector2( -100.927, -35.8093 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea2D"]
 shape = SubResource( 1 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 2 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="input_event" from="ClickArea2D" to="." method="_on_ClickArea2D_input_event"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]

@@ -36,7 +36,7 @@ func on_mission_succeed():
 func on_mission_failed():
 	pass
 
-func _on_Area2D_body_entered(body):
+func _on_HurtBox_body_entered(body):
 	var fireball = body as Fireball
 	if fireball:
 		on_fireball_collision(fireball)
