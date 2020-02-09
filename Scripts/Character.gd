@@ -5,7 +5,7 @@ func _ready():
 	var _error
 	_error = GameManager.connect("setup_mission", self, "on_mission_setup")
 	_error = GameManager.connect("run_mission", self, "on_mission_run")
-	_error = GameManager.connect("succeed_mission", self, "on_mission_stop_with_success")
+	_error = GameManager.connect("succeed_mission", self, "on_mission_succeed_and_stop")
 	_error = GameManager.connect("fail_mission", self, "on_mission_stop_with_failure")
 
 # virtual
