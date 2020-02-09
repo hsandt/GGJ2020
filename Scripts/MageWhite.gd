@@ -35,7 +35,7 @@ func _on_WhiteBarrierHandle_input_event(_viewport: Node, event: InputEvent, _sha
 		if GameManager.phase == GameManager.Phase.Setup:
 			var mouse_event = event as InputEventMouseButton
 			if mouse_event:
-					moving_barrier_handle = true
+					self.moving_barrier_handle = true
 			else:
 				print("ERROR: mouse_interact input event is not an InputEventMouseButton, " +
 					"make sure only mouse buttons are mapped to this action")
@@ -43,7 +43,7 @@ func _on_WhiteBarrierHandle_input_event(_viewport: Node, event: InputEvent, _sha
 func _unhandled_input(event: InputEvent):
 	# mouse may be released outside handle area, so we need the generic
 	# input method to detect it
-	if moving_barrier_handle:
+	if self.moving_barrier_handle:
 		if GameManager.phase == GameManager.Phase.Setup:
 			if event is InputEventMouseMotion:
 				# we assume the handle is not too big and we don't need to subtract
@@ -52,7 +52,7 @@ func _unhandled_input(event: InputEvent):
 				var new_radius = clamp(distance, min_barrier_radius, max_barrier_radius)
 				set_barrier_radius(new_radius)
 			if event.is_action_released("mouse_interact"):
-					moving_barrier_handle = false
+					self.moving_barrier_handle = false
 
 func set_barrier_radius(value):
 	self.barrier_radius = value
