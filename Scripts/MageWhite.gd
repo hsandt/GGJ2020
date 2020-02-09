@@ -57,8 +57,8 @@ func _unhandled_input(event: InputEvent):
 func set_barrier_radius(value):
 	self.barrier_radius = value
 	var scale = value / base_shape_radius
-	self.white_barrier.scale = Vector2(scale, scale)
-	self.white_barrier_handle.position = value * Vector2.RIGHT
+	white_barrier.scale = Vector2(scale, scale)
+	white_barrier_handle.position = value * Vector2.RIGHT
 
 func on_mission_run():
 	# stop editing now, but preserve last value
