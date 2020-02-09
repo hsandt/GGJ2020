@@ -60,6 +60,7 @@ margin_left = -890.24
 margin_top = 209.16
 margin_right = -48.0
 margin_bottom = -112.0
+mouse_filter = 2
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 2
@@ -68,13 +69,21 @@ __meta__ = {
 }
 
 [node name="MissionButton01" parent="GridContainer" instance=ExtResource( 5 )]
+margin_right = 184.0
 mission_number = 1
 
 [node name="MissionButton02" parent="GridContainer" instance=ExtResource( 5 )]
-margin_left = 192.0
-margin_right = 376.0
+margin_left = 194.0
+margin_right = 378.0
 text = "Mission 02"
 mission_number = 2
+
+[node name="MissionButton03" parent="GridContainer" instance=ExtResource( 5 )]
+margin_top = 63.0
+margin_right = 184.0
+margin_bottom = 116.0
+text = "Mission 03"
+mission_number = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.717
@@ -85,6 +94,7 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = -20.0
+mouse_filter = 2
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false

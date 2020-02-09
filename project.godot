@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "MissionScene",
 "language": "GDScript",
 "path": "res://Scripts/MissionScene.gd"
+}, {
+"base": "StaticBody2D",
+"class": "WhiteBarrier",
+"language": "GDScript",
+"path": "res://Scripts/WhiteBarrier.gd"
 } ]
 _global_script_class_icons={
 "ChandelierBody": "",
 "Character": "",
 "Fireball": "",
-"MissionScene": ""
+"MissionScene": "",
+"WhiteBarrier": ""
 }
 
 [application]
@@ -78,10 +84,11 @@ mouse_interact={
 2d_physics/layer_1="Character"
 2d_physics/layer_2="Projectile"
 2d_physics/layer_3="Prop"
+2d_physics/layer_4="Barrier"
+2d_physics/layer_5="DeadZone"
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

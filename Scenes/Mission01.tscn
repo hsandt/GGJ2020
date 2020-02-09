@@ -6,11 +6,12 @@
 [ext_resource path="res://Prefabs/Princess.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/MissionScene.gd" type="Script" id=5]
 
-[node name="Root2D" type="Node2D"]
+[node name="MissionScene" type="Node2D"]
 script = ExtResource( 5 )
 mission_number = 1
 
 [node name="MissionHUDRoot" parent="." instance=ExtResource( 1 )]
+title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
 
 [node name="MageRed" parent="." instance=ExtResource( 2 )]
 scale = Vector2( -1, 1 )
