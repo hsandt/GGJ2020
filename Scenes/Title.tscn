@@ -123,7 +123,6 @@ __meta__ = {
 }
 
 [node name="InstructionsPanel" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -138,16 +137,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="InstructionsPanel"]
+[node name="Title" type="Label" parent="InstructionsPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 81.0
-margin_top = 43.7129
+margin_top = 44.0
 margin_right = -82.0
-margin_bottom = -487.287
+margin_bottom = -607.0
 custom_fonts/font = ExtResource( 4 )
 text = "Instructions"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="Label" parent="InstructionsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 81.0
+margin_top = 113.0
+margin_right = -81.0
+margin_bottom = -148.0
+custom_fonts/font = ExtResource( 4 )
+text = "The timeline has been broken!
+
+Chaos has spread onto the fantasy kingdom, and nothing is as it should: wizards are killing princesses with fire, evil lords remain unpunished, chandeliers are falling on the wrong heads...
+
+A minor deity, you must right the wrongs by interacting with highlighted elements. When you're ready, click Run. If you fail, click Retry.
+
+ Now go and repair the timeline!"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
