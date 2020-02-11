@@ -19,11 +19,11 @@ mission_number = 2
 title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
 
 [node name="MageRed" parent="." instance=ExtResource( 2 )]
-position = Vector2( 178.038, 402.37 )
+position = Vector2( 178.038, 370.158 )
 scale = Vector2( -1, 1 )
 
 [node name="MageRed2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1086.96, 402.37 )
+position = Vector2( 1086.96, 370.158 )
 
 [node name="Boss" parent="." instance=ExtResource( 3 )]
 position = Vector2( 477.635, 632.703 )

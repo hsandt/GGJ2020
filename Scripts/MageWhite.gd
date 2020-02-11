@@ -4,12 +4,7 @@ onready var white_barrier_handle = $WhiteBarrierHandle as Area2D
 onready var white_barrier = $WhiteBarrier as StaticBody2D
 
 # Computed on ready (expression was too complex for a one-line onready var)
-var base_shape_radius : float
-
-# Parameters
-export var initial_barrier_radius = 100.0
-export var min_barrier_radius = 50.0
-export var max_barrier_radius = 150.0
+var barrier_handle_distance : float
 
 # State
 
@@ -20,14 +15,10 @@ var moving_barrier_handle = false
 var barrier_radius : float
 
 func _ready():
-	var shape_node = $WhiteBarrier/CollisionShape2D as CollisionShape2D
-	var shape = shape_node.shape as CircleShape2D
-	if shape:
-		base_shape_radius = shape.radius
-	else:
-		print("ERROR: WhiteBarrier shape is not CircleShape2D, cannot get radius")
-
-	set_barrier_radius(initial_barrier_radius)
+	barrier_handle_distance = white_barrier_handle.position.length()
+		
+	# seems redundant, but it's just to update handle position in case it doesn't match on start
+	set_barrier_angle(white_barrier.rotation)
 
 func _on_WhiteBarrierHandle_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	# detect player clicking on handle to start moving it
@@ -48,17 +39,16 @@ func _unhandled_input(event: InputEvent):
 			if event is InputEventMouseMotion:
 				# we assume the handle is not too big and we don't need to subtract
 				# the initial drag offset
-				var distance = white_barrier.global_position.distance_to(event.position)
-				var new_radius = clamp(distance, min_barrier_radius, max_barrier_radius)
-				set_barrier_radius(new_radius)
+				var center_to_mouse_vector : Vector2 = event.position - white_barrier.global_position
+				var angle = Vector2.UP.angle_to(center_to_mouse_vector)
+				set_barrier_angle(angle)
 			if event.is_action_released("mouse_interact"):
 					self.moving_barrier_handle = false
 
-func set_barrier_radius(value):
-	self.barrier_radius = value
-	var scale = value / base_shape_radius
-	white_barrier.scale = Vector2(scale, scale)
-	white_barrier_handle.position = value * Vector2.RIGHT
+func set_barrier_angle(value):
+	white_barrier.rotation = value
+	# white barrier and handle have same parent (MageWhite), so just set relative position
+	white_barrier_handle.position = white_barrier.position + self.barrier_handle_distance * Vector2.UP.rotated(value)
 
 func on_mission_run():
 	# stop editing now, but preserve last value
