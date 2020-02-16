@@ -12,6 +12,6 @@ func _ready():
 
 func destroy():
 	# finally decrement active count, as task transferred from MageRed is over
-	GameManager.decrement_active_elements_count()
+	GameManager.on_active_element_destroyed()
 	print("chandelier died: " + str(GameManager.active_elements_count))
 	queue_free()

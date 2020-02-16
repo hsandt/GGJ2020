@@ -26,6 +26,6 @@ func _process(delta):
 
 func destroy():
 	# finally decrement active count, as task transferred from MageRed is over
-	GameManager.decrement_active_elements_count()
+	GameManager.on_active_element_destroyed()
 	print("fireball died: " + str(GameManager.active_elements_count))
 	queue_free()

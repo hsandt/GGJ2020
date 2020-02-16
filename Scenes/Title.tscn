@@ -63,27 +63,41 @@ margin_bottom = -112.0
 mouse_filter = 2
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
-columns = 2
+columns = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MissionButton01" parent="GridContainer" instance=ExtResource( 5 )]
-margin_right = 184.0
+margin_right = 187.0
 mission_number = 1
 
 [node name="MissionButton02" parent="GridContainer" instance=ExtResource( 5 )]
-margin_left = 194.0
-margin_right = 378.0
+margin_left = 197.0
+margin_right = 381.0
 text = "Mission 02"
 mission_number = 2
 
 [node name="MissionButton03" parent="GridContainer" instance=ExtResource( 5 )]
-margin_top = 63.0
-margin_right = 184.0
-margin_bottom = 116.0
+margin_left = 391.0
+margin_right = 575.0
 text = "Mission 03"
 mission_number = 3
+
+[node name="MissionButton04" parent="GridContainer" instance=ExtResource( 5 )]
+margin_top = 63.0
+margin_right = 187.0
+margin_bottom = 116.0
+text = "Mission 04"
+mission_number = 4
+
+[node name="MissionButton05" parent="GridContainer" instance=ExtResource( 5 )]
+margin_left = 197.0
+margin_top = 63.0
+margin_right = 381.0
+margin_bottom = 116.0
+text = "Mission 05"
+mission_number = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.717
@@ -123,6 +137,7 @@ __meta__ = {
 }
 
 [node name="InstructionsPanel" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

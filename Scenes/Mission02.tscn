@@ -1,45 +1,30 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/MissionHUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/MageRed.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Prefabs/Boss.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Princess.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prefabs/Chandelier.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/MissionScene.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/DeadZone.gd" type="Script" id=7]
-
-[sub_resource type="ConcavePolygonShape2D" id=1]
-segments = PoolVector2Array( -100, -100, 1380, -100, 1380, -100, 1380, 820, 1380, 820, -100, 820, -100, 820, -100, -100 )
+[ext_resource path="res://Scripts/MissionScene.gd" type="Script" id=5]
+[ext_resource path="res://Prefabs/DeadZoneArea2D.tscn" type="PackedScene" id=6]
 
 [node name="MissionScene" type="Node2D"]
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 mission_number = 2
 
 [node name="MissionHUDRoot" parent="." instance=ExtResource( 1 )]
 title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
 
+[node name="DeadZoneArea2D" parent="." instance=ExtResource( 6 )]
+
 [node name="MageRed" parent="." instance=ExtResource( 2 )]
-position = Vector2( 178.038, 370.158 )
+position = Vector2( 762.141, 473.925 )
 scale = Vector2( -1, 1 )
 
 [node name="MageRed2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1086.96, 370.158 )
-
-[node name="Boss" parent="." instance=ExtResource( 3 )]
-position = Vector2( 477.635, 632.703 )
+position = Vector2( 522.474, 473.925 )
 
 [node name="Princess" parent="." instance=ExtResource( 4 )]
-position = Vector2( 745.835, 632.702 )
+position = Vector2( 993.84, 473.925 )
 
-[node name="Chandelier" parent="." instance=ExtResource( 5 )]
-position = Vector2( 477.635, 402.37 )
-
-[node name="Chandelier2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 745.835, 402.37 )
-
-[node name="DeadZoneArea2D" type="Area2D" parent="."]
-script = ExtResource( 7 )
-
-[node name="OuterShape" type="CollisionShape2D" parent="DeadZoneArea2D"]
-shape = SubResource( 1 )
-[connection signal="body_entered" from="DeadZoneArea2D" to="DeadZoneArea2D" method="_on_Area2D_body_entered"]
+[node name="Princess2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 280.869, 473.925 )
+scale = Vector2( -1, 1 )
