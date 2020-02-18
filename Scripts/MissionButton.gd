@@ -1,4 +1,5 @@
 extends Button
+class_name MissionButton
 
 export(int) var mission_number
 

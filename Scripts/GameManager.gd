@@ -14,6 +14,10 @@ signal run_mission
 signal succeed_mission
 signal fail_mission
 
+# See MissionData, should be a Resource instantiated in res://Data/
+# but instead, we own it
+var mission_data : MissionData
+
 # State
 var current_mission_number : int
 var phase : int  # Phase
@@ -25,6 +29,10 @@ var living_bosses_count = 0
 # How many princesses are dead? Should be 0 to succeed.
 var dead_princesses_count = 0
 
+func _ready():
+	mission_data = MissionData.new()
+	mission_data.load_mission_info_array()
+
 func go_to_title():
 	var error = get_tree().change_scene("res://Scenes/Title.tscn")
 	if error:
@@ -32,7 +40,9 @@ func go_to_title():
 
 func start_mission(mission_number):
 	self.current_mission_number = mission_number
-	var error = get_tree().change_scene("res://Scenes/Mission%02d.tscn" % mission_number)
+	var mission_info = mission_data.get_mission_info(mission_number)
+	print("Change scene to Mission %02d" % mission_number)
+	var error = get_tree().change_scene_to(mission_info.scene)
 	if error:
 		print("error: " + str(error))
 	
