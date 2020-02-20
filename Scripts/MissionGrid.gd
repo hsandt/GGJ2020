@@ -10,5 +10,7 @@ func _ready():
 	for mission_info in GameManager.mission_data.mission_info_array:
 		var mission_button = mission_button_prefab.instance() as MissionButton
 		mission_button.mission_number = mission_info.number
+		mission_button.name = "MissionButton%02d" % mission_info.number
 		mission_button.text = "Mission %02d" % mission_info.number
+		print("[MissionGrid] Generated %s" % mission_button.name)
 		add_child(mission_button)

@@ -35,7 +35,7 @@ func load_mission_info_array():
 	for i in range(MISSION_COUNT):
 		# convert from 0-based index to natural count
 		var number = i + 1
-		print("loading mission info %02d" % number)
+		print("[MissionData] Loading MissionInfo%02d..." % number)
 		mission_info_array.append(load("res://Data/MissionInfo%02d.tres" % number))
 
 func get_mission_info(number):

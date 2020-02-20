@@ -17,8 +17,13 @@ title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
 [node name="DeadZoneArea2D" parent="." instance=ExtResource( 6 )]
 
 [node name="MageRed" parent="." instance=ExtResource( 2 )]
+position = Vector2( 630, 473.925 )
+
+[node name="Body" parent="MageRed" index="1"]
 scale = Vector2( -1, 1 )
 
 [node name="Boss" parent="." instance=ExtResource( 3 )]
 
 [node name="Princess" parent="." instance=ExtResource( 4 )]
+
+[editable path="MageRed"]

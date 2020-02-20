@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Prefabs/Princess.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/DeadZoneArea2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/MissionScene.gd" type="Script" id=3]
+[ext_resource path="res://Prefabs/Chandelier.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/MissionHUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/Boss.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/MageRed.tscn" type="PackedScene" id=7]
+
+[node name="MissionScene" type="Node2D"]
+script = ExtResource( 3 )
+mission_number = 4
+
+[node name="MissionHUDRoot" parent="." instance=ExtResource( 5 )]
+title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
+
+[node name="DeadZoneArea2D" parent="." instance=ExtResource( 2 )]
+
+[node name="MageRed" parent="." instance=ExtResource( 7 )]
+position = Vector2( 178.038, 370.158 )
+scale = Vector2( -1, 1 )
+
+[node name="MageRed2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1086.96, 370.158 )
+
+[node name="Boss" parent="." instance=ExtResource( 6 )]
+position = Vector2( 477.635, 632.703 )
+
+[node name="Princess" parent="." instance=ExtResource( 1 )]
+position = Vector2( 745.835, 632.702 )
+
+[node name="Chandelier" parent="." instance=ExtResource( 4 )]
+position = Vector2( 477.635, 402.37 )
+
+[node name="Chandelier2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 745.835, 402.37 )

@@ -71,37 +71,6 @@ __meta__ = {
 }
 mission_button_prefab = ExtResource( 5 )
 
-[node name="MissionButton01" parent="MissionGrid" instance=ExtResource( 5 )]
-margin_right = 187.0
-mission_number = 1
-
-[node name="MissionButton02" parent="MissionGrid" instance=ExtResource( 5 )]
-margin_left = 197.0
-margin_right = 381.0
-text = "Mission 02"
-mission_number = 2
-
-[node name="MissionButton08" parent="MissionGrid" instance=ExtResource( 5 )]
-margin_left = 391.0
-margin_right = 575.0
-text = "Mission 03"
-mission_number = 3
-
-[node name="MissionButton04" parent="MissionGrid" instance=ExtResource( 5 )]
-margin_top = 63.0
-margin_right = 187.0
-margin_bottom = 116.0
-text = "Mission 04"
-mission_number = 4
-
-[node name="MissionButton05" parent="MissionGrid" instance=ExtResource( 5 )]
-margin_left = 197.0
-margin_top = 63.0
-margin_right = 381.0
-margin_bottom = 116.0
-text = "Mission 05"
-mission_number = 5
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.717
 anchor_top = 0.693
