@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/RubberDuck.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 60.0
+radius = 90.0
 
 [node name="Boss" type="Node2D"]
 position = Vector2( 335, 473.925 )
@@ -14,8 +14,8 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 16.7512 )
-scale = Vector2( 2.05292, 2.05292 )
+position = Vector2( 0, 25.126 )
+scale = Vector2( 3.079, 3.079 )
 texture = ExtResource( 2 )
 flip_h = true
 

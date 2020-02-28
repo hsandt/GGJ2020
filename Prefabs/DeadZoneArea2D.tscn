@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/DeadZone.gd" type="Script" id=1]
 
 [sub_resource type="ConcavePolygonShape2D" id=1]
-segments = PoolVector2Array( -100, -100, 1380, -100, 1380, -100, 1380, 820, 1380, 820, -100, 820, -100, 820, -100, -100 )
+segments = PoolVector2Array( -100, -100, 2020, -100, 2020, -100, 2020, 1180, 2020, 1180, -100, 1180, -100, 1180, -100, -100 )
 
 [node name="DeadZoneArea2D" type="Area2D"]
 script = ExtResource( 1 )

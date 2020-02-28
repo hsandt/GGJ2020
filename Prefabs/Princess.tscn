@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/sara-stand.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 60.0
+radius = 90.0
 
 [node name="Princess" type="Node2D"]
 position = Vector2( 913.951, 473.925 )
@@ -14,7 +14,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2.98144, 2.98144 )
+scale = Vector2( 4.471, 4.471 )
 texture = ExtResource( 2 )
 
 [node name="HurtBox" type="Area2D" parent="."]

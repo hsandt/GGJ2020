@@ -7,11 +7,21 @@ var initial_size = Vector2(ProjectSettings.get_setting("display/window/size/widt
 # State
 var hidpi_active = false
 
+func _ready():
+	print_debug("test")
+	call_deferred("toggle_fullscreen")
+
 func _input(event):
 	# let user toggle hi-dpi resolution freely
 	# (hi-dpi is hard to detect and resize is hard to force on start)
-	if event.is_action_pressed("toggle_hidpi"):
+	if event.is_action_pressed("app_toggle_hidpi"):
 		toggle_hidpi()
+		
+	if event.is_action_pressed("app_toggle_fullscreen"):
+		toggle_fullscreen()
+		
+	if event.is_action_pressed("app_take_screenshot"):
+		take_screenshot()
 		
 	if event.is_action_pressed("app_exit"):
 		get_tree().quit()
@@ -26,3 +36,33 @@ func toggle_hidpi():
 		
 	# toggle
 	hidpi_active = not hidpi_active
+	print("[AppManager] Toggled hi-dpi size: %s" % hidpi_active)
+	
+func toggle_fullscreen():
+	OS.window_fullscreen = not OS.window_fullscreen
+	print("[AppManager] Toggled fullscreen: %s" % OS.window_fullscreen)
+	
+func take_screenshot():
+	var datetime = OS.get_datetime()
+	
+	# Make sure all numbers less than 10 are padded with a leading 0 so
+	# alphabetical sorting matches sorting by date. Modify in-place.
+	for key in ["month", "day", "hour", "minute", "second"]:
+		datetime[key] = "%02d" % datetime[key]
+	var screenshot_filename = "{year}-{month}-{day}_{hour}-{minute}-{second}.png".format(datetime)
+	var screenshot_filepath = "user://Screenshots".plus_file(screenshot_filename)
+	
+	var dir = Directory.new()
+	if dir.open("user://Screenshots") != OK:
+		# no Screenshots directory in user dir, make it
+		if dir.make_dir("user://Screenshots") != OK:
+			print("[AppManager] Failed to make directory user://Screenshots")
+	
+	save_screenshot_in(screenshot_filepath)
+
+func save_screenshot_in(screenshot_filepath):
+	var image = get_viewport().get_texture().get_data()
+	# In OpenGL, viewport data is vertically reversed
+	image.flip_y()
+	image.save_png(screenshot_filepath)
+	print("[AppManager] Saved screenshot in %s" % screenshot_filepath)

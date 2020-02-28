@@ -24,10 +24,32 @@ radius = 60.0
 
 [node name="MissionScene" type="Node2D"]
 script = ExtResource( 6 )
-mission_number = 3
+mission_number = 5
 
 [node name="MissionHUDRoot" parent="." instance=ExtResource( 1 )]
 title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
+
+[node name="Success" parent="MissionHUDRoot" index="1"]
+visible = false
+
+[node name="RunButton" parent="MissionHUDRoot/HBoxContainer" index="0"]
+margin_right = 455.0
+margin_bottom = 113.0
+
+[node name="RetryButton" parent="MissionHUDRoot/HBoxContainer" index="1"]
+margin_left = 475.0
+margin_right = 930.0
+margin_bottom = 113.0
+
+[node name="NextMissionButton" parent="MissionHUDRoot/HBoxContainer" index="2"]
+margin_left = 950.0
+margin_right = 1405.0
+margin_bottom = 113.0
+
+[node name="BackToTitleButton" parent="MissionHUDRoot/HBoxContainer" index="3"]
+margin_left = 1425.0
+margin_right = 1880.0
+margin_bottom = 113.0
 
 [node name="DeadZoneArea2D" parent="." instance=ExtResource( 7 )]
 
@@ -36,20 +58,23 @@ position = Vector2( 622.387, 557.047 )
 scale = Vector2( -1, 1 )
 
 [node name="Boss" parent="." instance=ExtResource( 3 )]
-position = Vector2( 215.245, 557.047 )
+position = Vector2( 367.607, 557.047 )
 
 [node name="Chandelier" parent="." instance=ExtResource( 5 )]
-position = Vector2( 215.245, 343.606 )
+position = Vector2( 367.607, 311.394 )
 
 [node name="Chandelier2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 622.387, 343.606 )
+position = Vector2( 630, 311.394 )
 
 [node name="Chandelier3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1024.31, 343.606 )
+position = Vector2( 910.305, 311.394 )
 
 [node name="MageWhite" type="Node2D" parent="."]
-position = Vector2( 1012.41, 557.047 )
+position = Vector2( 965, 557.047 )
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="MageWhite"]
 position = Vector2( 0, -22.51 )
@@ -106,3 +131,5 @@ __meta__ = {
 }
 [connection signal="input_event" from="MageWhite/WhiteBarrierHandle" to="MageWhite" method="_on_WhiteBarrierHandle_input_event"]
 [connection signal="body_entered" from="MageWhite/HurtBox" to="MageWhite" method="_on_HurtBox_body_entered"]
+
+[editable path="MissionHUDRoot"]
