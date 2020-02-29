@@ -7,6 +7,12 @@ export(PackedScene) var mission_button_prefab
 #export(MissionData) var mission_data
 
 func _ready():
+	# remove all the Mission Button examples, only there for WYSIWYG
+	# slight performance cost, so don't hesitate to remove them
+	# manually from the Scene where you're ready to export game
+	for child in get_children():
+		child.queue_free()
+	
 	for mission_info in GameManager.mission_data.mission_info_array:
 		var mission_button = mission_button_prefab.instance() as MissionButton
 		mission_button.mission_number = mission_info.number
