@@ -1,15 +1,25 @@
 extends Node
 
 # Parameters
-var initial_size = Vector2(ProjectSettings.get_setting("display/window/size/width"),
-	ProjectSettings.get_setting("display/window/size/height"))
+## If true, auto-switch to fullscreen on standalone game start
+export(bool) var auto_fullscreen_in_standalone = false
+
+# Parameters (set on _ready)
+## Window initial size, used for hi-dpi resize
+var initial_size : Vector2
+
 
 # State
+## is window at 2x resolution?
 var hidpi_active = false
-
 func _ready():
-	print_debug("test")
-	call_deferred("toggle_fullscreen")
+	initial_size = OS.window_size
+	
+	if not OS.window_fullscreen and auto_fullscreen_in_standalone:
+		print("checking feature")
+		if OS.has_feature("standalone"):
+			print("[AppManager] Playing standalone game with auto-fullscreen ON, enabling fullscreen")
+			call_deferred("toggle_fullscreen")
 
 func _input(event):
 	# let user toggle hi-dpi resolution freely
