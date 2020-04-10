@@ -2,15 +2,15 @@
 
 [ext_resource path="res://Scripts/WhiteBarrier.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/MissionScene.gd" type="Script" id=2]
-[ext_resource path="res://Prefabs/DeadZoneArea2D.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/Chandelier.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/MissionHUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/MageRed.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/MissionHUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Boss.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/wizzard_m_run_anim_f1.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/MageWhite.gd" type="Script" id=7]
 [ext_resource path="res://Sprites/white_barrier_handle.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/white_barrier_rect.png" type="Texture" id=9]
-[ext_resource path="res://Prefabs/Boss.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Prefabs/MageRed.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Prefabs/Chandelier.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Prefabs/DeadZoneArea2D.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 0, -77 )
@@ -26,28 +26,28 @@ radius = 60.0
 script = ExtResource( 2 )
 mission_number = 5
 
-[node name="MissionHUDRoot" parent="." instance=ExtResource( 5 )]
+[node name="MissionHUDRoot" parent="." instance=ExtResource( 4 )]
 title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
 
 [node name="Success" parent="MissionHUDRoot" index="1"]
 visible = false
 
-[node name="DeadZoneArea2D" parent="." instance=ExtResource( 3 )]
+[node name="DeadZoneArea2D" parent="." instance=ExtResource( 11 )]
 
-[node name="MageRed" parent="." instance=ExtResource( 11 )]
+[node name="MageRed" parent="." instance=ExtResource( 3 )]
 position = Vector2( 622.387, 557.047 )
 scale = Vector2( -1, 1 )
 
-[node name="Boss" parent="." instance=ExtResource( 10 )]
+[node name="Boss" parent="." instance=ExtResource( 5 )]
 position = Vector2( 367.607, 557.047 )
 
-[node name="Chandelier" parent="." instance=ExtResource( 4 )]
+[node name="Chandelier" parent="." instance=ExtResource( 10 )]
 position = Vector2( 367.607, 311.394 )
 
-[node name="Chandelier2" parent="." instance=ExtResource( 4 )]
+[node name="Chandelier2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 630, 311.394 )
 
-[node name="Chandelier3" parent="." instance=ExtResource( 4 )]
+[node name="Chandelier3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 910.305, 311.394 )
 
 [node name="MageWhite" type="Node2D" parent="."]

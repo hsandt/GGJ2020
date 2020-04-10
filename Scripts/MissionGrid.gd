@@ -4,7 +4,7 @@ export(PackedScene) var mission_button_prefab
 
 # doesn't work, same issue as in MissionData itself
 # we'll access MissionData via GameManager instead
-#export(MissionData) var mission_data
+# export(MissionData) var mission_data
 
 func _ready():
 	# remove all the Mission Button examples, only there for WYSIWYG

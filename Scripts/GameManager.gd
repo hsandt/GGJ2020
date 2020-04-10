@@ -7,16 +7,13 @@ enum Phase {
 	Failure
 }
 
-const MAX_MISSION_NUMBER = 5
-
 signal setup_mission
 signal run_mission
 signal succeed_mission
 signal fail_mission
 
-# See MissionData, should be a Resource instantiated in res://Data/
-# but instead, we own it
-var mission_data : MissionData
+# Data
+var mission_data : MissionData = preload("res://Data/MissionData.tres")
 
 # State
 var current_mission_number : int
@@ -30,7 +27,6 @@ var living_bosses_count = 0
 var dead_princesses_count = 0
 
 func _ready():
-	mission_data = MissionData.new()
 	mission_data.load_mission_info_array()
 
 func go_to_title():
@@ -54,7 +50,7 @@ func restart_mission():
 	start_mission(self.current_mission_number)
 
 func is_last_mission(mission_number):
-	return mission_number == MAX_MISSION_NUMBER
+	return mission_number == self.mission_data.mission_count
 
 func start_next_mission():
 	if !is_last_mission(self.current_mission_number):
