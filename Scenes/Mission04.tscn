@@ -16,17 +16,17 @@ title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
 [node name="DeadZoneArea2D" parent="." instance=ExtResource( 2 )]
 
 [node name="MageRed" parent="." instance=ExtResource( 7 )]
-position = Vector2( 885, 456.493 )
+position = Vector2( 1229.92, 663.196 )
 
 [node name="MageRed2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 630, 511.662 )
+position = Vector2( 974.916, 718.365 )
 
 [node name="MageRed3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 376.989, 584.262 )
+position = Vector2( 721.905, 790.965 )
 
 [node name="Princess" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1159.46, 482.194 )
+position = Vector2( 1504.38, 688.897 )
 
 [node name="Princess2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 142.073, 473.925 )
+position = Vector2( 486.989, 680.628 )
 scale = Vector2( -1, 1 )

@@ -1,0 +1,173 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/WhiteBarrier.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/MissionScene.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/DeadZoneArea2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/MageRed.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Boss.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/wizzard_m_run_anim_f1.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/MageWhite.gd" type="Script" id=7]
+[ext_resource path="res://Sprites/white_barrier_handle.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/white_barrier_rect.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/MissionHUD.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 0, -77 )
+b = Vector2( 0, 77 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 60.0
+
+[node name="MissionScene" type="Node2D"]
+script = ExtResource( 2 )
+mission_number = 8
+
+[node name="MissionHUDRoot" parent="." instance=ExtResource( 10 )]
+title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
+
+[node name="Title" parent="MissionHUDRoot" index="0"]
+visible = false
+
+[node name="Success" parent="MissionHUDRoot" index="1"]
+visible = false
+
+[node name="DeadZoneArea2D" parent="." instance=ExtResource( 3 )]
+
+[node name="MageRed" parent="." instance=ExtResource( 4 )]
+position = Vector2( 798.689, 650.345 )
+scale = Vector2( -1, 1 )
+
+[node name="Boss" parent="." instance=ExtResource( 5 )]
+position = Vector2( 568.412, 650.345 )
+
+[node name="MageWhite3" type="Node2D" parent="."]
+position = Vector2( 627.26, 368.646 )
+scale = Vector2( -1, 1 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="MageWhite3"]
+position = Vector2( 0, -22.51 )
+scale = Vector2( -7.356, 7.356 )
+texture = ExtResource( 6 )
+
+[node name="WhiteBarrier" type="StaticBody2D" parent="MageWhite3"]
+position = Vector2( -84.1049, 27.4361 )
+collision_layer = 8
+collision_mask = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MageWhite3/WhiteBarrier"]
+shape = SubResource( 1 )
+one_way_collision_margin = 1.5
+
+[node name="Sprite" type="Sprite" parent="MageWhite3/WhiteBarrier"]
+scale = Vector2( 0.419278, 0.419278 )
+texture = ExtResource( 9 )
+
+[node name="WhiteBarrierHandle" type="Area2D" parent="MageWhite3"]
+position = Vector2( -84.1048, -50.1303 )
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 32
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MageWhite3/WhiteBarrierHandle"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="MageWhite3/WhiteBarrierHandle"]
+modulate = Color( 1, 1, 1, 0.513726 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
+
+[node name="HurtBox" type="Area2D" parent="MageWhite3"]
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+collision_mask = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MageWhite3/HurtBox"]
+shape = SubResource( 3 )
+disabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MageWhite2" type="Node2D" parent="."]
+position = Vector2( 1083.58, 650.345 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="MageWhite2"]
+position = Vector2( 0, -22.51 )
+scale = Vector2( -7.356, 7.356 )
+texture = ExtResource( 6 )
+
+[node name="WhiteBarrier" type="StaticBody2D" parent="MageWhite2"]
+position = Vector2( -84.1049, 27.4361 )
+collision_layer = 8
+collision_mask = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MageWhite2/WhiteBarrier"]
+shape = SubResource( 1 )
+one_way_collision_margin = 1.5
+
+[node name="Sprite" type="Sprite" parent="MageWhite2/WhiteBarrier"]
+scale = Vector2( 0.419278, 0.419278 )
+texture = ExtResource( 9 )
+
+[node name="WhiteBarrierHandle" type="Area2D" parent="MageWhite2"]
+position = Vector2( -84.1048, -50.1303 )
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 32
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MageWhite2/WhiteBarrierHandle"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="MageWhite2/WhiteBarrierHandle"]
+modulate = Color( 1, 1, 1, 0.513726 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
+
+[node name="HurtBox" type="Area2D" parent="MageWhite2"]
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+collision_mask = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MageWhite2/HurtBox"]
+shape = SubResource( 3 )
+disabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="input_event" from="MageWhite3/WhiteBarrierHandle" to="MageWhite3" method="_on_WhiteBarrierHandle_input_event"]
+[connection signal="body_entered" from="MageWhite3/HurtBox" to="MageWhite3" method="_on_HurtBox_body_entered"]
+[connection signal="input_event" from="MageWhite2/WhiteBarrierHandle" to="MageWhite2" method="_on_WhiteBarrierHandle_input_event"]
+[connection signal="body_entered" from="MageWhite2/HurtBox" to="MageWhite2" method="_on_HurtBox_body_entered"]
+
+[editable path="MissionHUDRoot"]

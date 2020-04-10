@@ -10,7 +10,7 @@
 
 [node name="MissionScene" type="Node2D"]
 script = ExtResource( 6 )
-mission_number = 5
+mission_number = 6
 
 [node name="MissionHUDRoot" parent="." instance=ExtResource( 1 )]
 title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
@@ -18,21 +18,18 @@ title_path = NodePath("../../MissionScene/MissionHUDRoot/Title")
 [node name="DeadZoneArea2D" parent="." instance=ExtResource( 7 )]
 
 [node name="MageRed" parent="." instance=ExtResource( 2 )]
-position = Vector2( 970, 569.924 )
+position = Vector2( 304.839, 602.543 )
 
 [node name="Body" parent="MageRed" index="1"]
 scale = Vector2( -1, 1 )
 
 [node name="Boss" parent="." instance=ExtResource( 3 )]
-position = Vector2( 392.833, 942.758 )
+position = Vector2( 1047.39, 942.758 )
 
 [node name="Princess" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1612.4, 942.758 )
 
 [node name="Chandelier" parent="." instance=ExtResource( 5 )]
-position = Vector2( 392.833, 649.425 )
-
-[node name="Chandelier2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1612.4, 649.425 )
+position = Vector2( 1317.36, 617.225 )
 
 [editable path="MageRed"]

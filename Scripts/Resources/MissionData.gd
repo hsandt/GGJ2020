@@ -27,7 +27,7 @@ class_name MissionData
 # if we don't set mission count manually, then we must count
 # the number of mission scenes that exist by using something like
 # https://godotengine.org/qa/5175/how-to-get-all-the-files-inside-a-folder
-const MISSION_COUNT = 5
+const MISSION_COUNT = 6
 
 var mission_info_array = []
 
