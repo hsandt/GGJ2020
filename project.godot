@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/ChandelierBody.gd"
 }, {
 "base": "Node2D",
+"class": "ChandelierSwinging",
+"language": "GDScript",
+"path": "res://Scripts/ChandelierSwinging.gd"
+}, {
+"base": "Node2D",
 "class": "Character",
 "language": "GDScript",
 "path": "res://Scripts/Character.gd"
@@ -51,6 +56,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ChandelierBody": "",
+"ChandelierSwinging": "",
 "Character": "",
 "Fireball": "",
 "MissionButton": "",

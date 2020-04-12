@@ -9,7 +9,7 @@
 [ext_resource path="res://Scripts/MageWhite.gd" type="Script" id=7]
 [ext_resource path="res://Sprites/white_barrier_handle.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/white_barrier_rect.png" type="Texture" id=9]
-[ext_resource path="res://Prefabs/Chandelier.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Prefabs/ChandelierSwinging.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Prefabs/DeadZoneArea2D.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SegmentShape2D" id=1]

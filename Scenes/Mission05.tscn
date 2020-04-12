@@ -4,7 +4,7 @@
 [ext_resource path="res://Prefabs/MageRed.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prefabs/Boss.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Princess.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prefabs/Chandelier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/ChandelierSwinging.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/MissionScene.gd" type="Script" id=6]
 [ext_resource path="res://Prefabs/DeadZoneArea2D.tscn" type="PackedScene" id=7]
 
@@ -30,9 +30,9 @@ position = Vector2( 392.833, 942.758 )
 position = Vector2( 1612.4, 942.758 )
 
 [node name="Chandelier" parent="." instance=ExtResource( 5 )]
-position = Vector2( 392.833, 649.425 )
+position = Vector2( 392.833, 203.56 )
 
 [node name="Chandelier2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1612.4, 649.425 )
+position = Vector2( 1612.4, 203.56 )
 
 [editable path="MageRed"]
