@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Tilemaps/stairs.tres" type="TileSet" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sample Stairs" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 60, 60 )
+tile_data = PoolIntArray( 196614, 11, 0, 196615, 10, 0, 196616, 10, 0, 196617, 10, 0, 196618, 0, 0, 196619, 7, 0, 262154, 4, 0, 262155, 3, 0, 262156, 7, 0, 327691, 4, 0, 327692, 3, 0, 327693, 7, 0, 393228, 4, 0, 393229, 6, 0 )
