@@ -17,7 +17,7 @@ func _on_Timer_timeout():
 	# after short time, re-enable collider
 	shape.disabled = false
 
-func _process(delta):
+func _physics_process(delta):
 	var kinematic_collision2d = move_and_collide(self.velocity * delta)
 	if kinematic_collision2d:
 		if kinematic_collision2d.collider is WhiteBarrier:
