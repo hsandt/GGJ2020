@@ -1,19 +1,19 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Fonts/FONT_Title.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Scripts/InstructionsButton.gd" type="Script" id=2]
-[ext_resource path="res://Fonts/FONT_Button.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Fonts/FONT_Instructions.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Prefabs/MissionButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/QuitButton.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/InstructionsBackButton.gd" type="Script" id=7]
-[ext_resource path="res://Scripts/TitleRoot.gd" type="Script" id=8]
-[ext_resource path="res://Scripts/MissionGrid.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/TitleRoot.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/FONT_Title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/MissionGrid.gd" type="Script" id=3]
+[ext_resource path="res://Prefabs/MissionButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fonts/FONT_Button.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Scripts/InstructionsButton.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/QuitButton.gd" type="Script" id=7]
+[ext_resource path="res://Fonts/FONT_Instructions.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Scripts/InstructionsBackButton.gd" type="Script" id=9]
 
 [node name="TitleRoot" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 8 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,7 +28,7 @@ margin_left = 86.64
 margin_top = -0.0400085
 margin_right = -85.64
 margin_bottom = -0.200012
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Broken fantasy"
 align = 1
 valign = 1
@@ -39,12 +39,12 @@ __meta__ = {
 [node name="Version" type="Label" parent="Title"]
 anchor_left = 1.0
 anchor_top = 0.657
-anchor_right = 1.252
-anchor_bottom = 1.331
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_top = 0.0780029
 margin_right = -0.334717
 margin_bottom = 0.0162354
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "v0.4a"
 align = 1
 valign = 1
@@ -53,6 +53,7 @@ __meta__ = {
 }
 
 [node name="MissionGrid" type="GridContainer" parent="."]
+editor/display_folded = true
 anchor_left = 0.042
 anchor_top = 0.438
 anchor_right = 0.654
@@ -60,71 +61,71 @@ anchor_bottom = 0.925
 margin_left = 0.359993
 margin_top = -0.0400391
 margin_right = 0.319946
-margin_bottom = -6.10352e-05
+margin_bottom = -6.10352e-005
 mouse_filter = 2
 custom_constants/vseparation = 10
 custom_constants/hseparation = 10
 columns = 4
-script = ExtResource( 9 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-mission_button_prefab = ExtResource( 5 )
+mission_button_prefab = ExtResource( 4 )
 
-[node name="Mission Button Example" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_right = 269.0
 margin_bottom = 76.0
 
-[node name="Mission Button Example2" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example2" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_left = 279.0
 margin_right = 548.0
 margin_bottom = 76.0
 
-[node name="Mission Button Example3" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example3" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_left = 558.0
 margin_right = 827.0
 margin_bottom = 76.0
 
-[node name="Mission Button Example4" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example4" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_left = 837.0
 margin_right = 1106.0
 margin_bottom = 76.0
 
-[node name="Mission Button Example5" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example5" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_top = 86.0
 margin_right = 269.0
 margin_bottom = 162.0
 
-[node name="Mission Button Example6" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example6" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_left = 279.0
 margin_top = 86.0
 margin_right = 548.0
 margin_bottom = 162.0
 
-[node name="Mission Button Example7" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example7" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_left = 558.0
 margin_top = 86.0
 margin_right = 827.0
 margin_bottom = 162.0
 
-[node name="Mission Button Example8" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example8" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_left = 837.0
 margin_top = 86.0
 margin_right = 1106.0
 margin_bottom = 162.0
 
-[node name="Mission Button Example9" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example9" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_top = 172.0
 margin_right = 269.0
 margin_bottom = 248.0
 
-[node name="Mission Button Example10" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example10" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_left = 279.0
 margin_top = 172.0
 margin_right = 548.0
 margin_bottom = 248.0
 
-[node name="Mission Button Example11" parent="MissionGrid" instance=ExtResource( 5 )]
+[node name="Mission Button Example11" parent="MissionGrid" instance=ExtResource( 4 )]
 margin_left = 558.0
 margin_top = 172.0
 margin_right = 827.0
@@ -148,9 +149,9 @@ __meta__ = {
 [node name="InstructionsButton" type="Button" parent="VBoxContainer"]
 margin_right = 503.0
 margin_bottom = 76.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
 text = "Instructions"
-script = ExtResource( 2 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -160,9 +161,9 @@ instructions_panel_path = NodePath("../../InstructionsPanel")
 margin_top = 96.0
 margin_right = 503.0
 margin_bottom = 172.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
 text = "Quit"
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -190,7 +191,7 @@ margin_left = 81.0
 margin_top = 44.0
 margin_right = -82.0
 margin_bottom = -607.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 8 )
 text = "Instructions"
 align = 1
 __meta__ = {
@@ -204,7 +205,7 @@ margin_left = 81.0
 margin_top = 113.0
 margin_right = -81.0
 margin_bottom = -148.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 8 )
 text = "The timeline has been broken!
 
 Chaos has spread onto the fantasy kingdom, and nothing is as it should: wizards are killing princesses with fire, evil lords remain unpunished, chandeliers are falling on the wrong heads...
@@ -225,9 +226,9 @@ margin_left = 382.183
 margin_top = 27.6321
 margin_right = -382.0
 margin_bottom = -31.5679
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
 text = "Back"
-script = ExtResource( 7 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
